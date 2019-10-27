@@ -30,10 +30,6 @@ public class PlayerScript : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (score >= 4)
-        {
-            winText.text = "You win!";
-        }
         if (collision.collider.tag == "Coin")
         {
             scoreValue += 1;
