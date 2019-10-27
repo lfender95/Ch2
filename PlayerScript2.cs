@@ -1,4 +1,5 @@
-﻿using System.Collections;
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,16 +9,17 @@ public class PlayerScript : MonoBehaviour
     private Rigidbody2D rd2d;
 
     public float speed;
-    public Text score;
+    public Text scoreText;
     public Text winText;
-    private int scoreValue = 0;
 
+    private int scoreValue;
 
     void Start()
     {
         rd2d = GetComponent<Rigidbody2D>();
-        score.text = scoreValue.ToString();
+        scoreValue = 0;
         winText.text = "";
+        SetCountText();
     }
 
 
@@ -32,9 +34,10 @@ public class PlayerScript : MonoBehaviour
     {
         if (collision.collider.tag == "Coin")
         {
-            scoreValue += 1;
-            score.text = scoreValue.ToString();
+            scoreValue = scoreValue + 1;
+            //score.text = scoreValue.ToString();
             Destroy(collision.collider.gameObject);
+            SetCountText();
         }
 
     }
@@ -54,9 +57,12 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
-    void SetCountText();
+    void SetCountText()
     {
-    score.text = scoreValue.ToString();
-    winText.text = "You win! Game created by Luke Fender!";
+        scoreText.text = "count: " + scoreValue.ToString(); 
+        if (scoreValue >= 6)
+        {
+            winText.text = "u win";
+        }
     }
 }
