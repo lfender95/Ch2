@@ -56,6 +56,7 @@ public class PlayerScript : MonoBehaviour
 
     void SetCountText();
     {
+    
 score.text = scoreValue.ToString();
         winText.text = "You win! Game created by Luke Fender!";
     }
